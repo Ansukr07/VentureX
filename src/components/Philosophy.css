@@ -1,0 +1,108 @@
+.philosophy {
+  position: relative;
+  padding: 0 0 120px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--grid);
+}
+
+/* Meta bar */
+.phil-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto;
+  align-items: center;
+  padding: 16px 40px;
+  border-bottom: 1px solid var(--grid);
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--black);
+  background: rgba(234,234,234,0.5);
+  gap: 16px;
+}
+
+.phil-meta-item { display: contents; }
+
+.phil-meta-date {
+  color: var(--green);
+  font-weight: 500;
+}
+
+.phil-meta-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.phil-coin {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.phil-body {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 80px 40px 0;
+  text-align: center;
+}
+
+.phil-text {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4.5vw, 58px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--black);
+  margin-bottom: 60px;
+  /* Framer Motion handles reveal — no CSS animation needed */
+}
+
+.phil-text--secondary {
+  color: #555;
+}
+
+.phil-inline-icon {
+  display: inline-block;
+  font-size: 0.75em;
+  opacity: 0.55;
+  vertical-align: middle;
+  transform: translateY(-2px);
+}
+
+.phil-dollar-wrap {
+  position: absolute;
+  right: -40px;
+  top: 40%;
+  width: 280px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.phil-dollar {
+  width: 100%;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.15));
+}
+
+.phil-doodle {
+  position: absolute;
+  width: 110px;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 4px;
+  mix-blend-mode: multiply;
+}
+
+.phil-doodle--tl { top: 8%; left: 2%; }
+.phil-doodle--br { bottom: 8%; right: 2%; }
+
+@media (max-width: 900px) {
+  .phil-dollar-wrap { display: none; }
+  .phil-meta { grid-template-columns: 1fr 1fr; }
+  .phil-meta-date, .phil-meta-right { display: none; }
+}
+
+@media (max-width: 600px) {
+  .phil-text { font-size: 24px; }
+  .phil-meta { padding: 14px 20px; }
+}

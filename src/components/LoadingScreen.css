@@ -1,0 +1,117 @@
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #888;
+  display: flex;
+  align-items: flex-end;        /* push content to bottom on mobile */
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Video ── */
+.loading-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* ── Base brand styles ── */
+.loading-brand {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #1a1a1a;
+  z-index: 3;
+}
+
+/* ── Mobile (default): flanking the character's legs / knees, safely outside the pants ── */
+.loading-brand--left {
+  display: block;
+  position: absolute;
+  right: calc(50% + clamp(72px, 20vw, 110px));
+  top: 72%;
+  translate: 0 -50%;
+  font-size: clamp(0.85rem, 3.8vw, 1.2rem);
+  font-weight: 600;
+  color: #0a0a0a;
+  letter-spacing: 0.12em;
+  text-align: right;
+}
+
+.loading-brand--right {
+  display: block;
+  position: absolute;
+  left: calc(50% + clamp(72px, 20vw, 110px));
+  top: 72%;
+  translate: 0 -50%;
+  font-size: clamp(0.85rem, 3.8vw, 1.2rem);
+  font-weight: 600;
+  color: #0a0a0a;
+  letter-spacing: 0.12em;
+  text-align: left;
+  line-height: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DESKTOP
+   ══════════════════════════════════════════════════════════════ */
+@media (min-width: 769px) {
+  .loading-screen {
+    background: #e9e9e9;
+    align-items: center;       /* vertically center everything */
+  }
+
+  /* Video: show full character */
+  .loading-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    z-index: 2;
+  }
+
+  /* VENTURE — left side, safely clear of the chessboard */
+  .loading-brand--left {
+    display: block;
+    position: absolute;
+    right: calc(50% + clamp(180px, 22vh, 280px));
+    top: 50%;
+    translate: 0 -50%;
+    z-index: 3;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.8rem, 3.2vw, 3.8rem);
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* X — right side, safely clear of the arm/waist */
+  .loading-brand--right {
+    display: block;
+    position: absolute;
+    left: calc(50% + clamp(150px, 18vh, 250px));
+    top: 50%;
+    translate: 0 -50%;
+    z-index: 3;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.8rem, 3.2vw, 3.8rem);
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: left;
+    white-space: nowrap;
+    line-height: 1;
+  }
+}

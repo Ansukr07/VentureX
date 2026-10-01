@@ -1,0 +1,98 @@
+.quote-section {
+  position: relative;
+  padding: 100px 40px 0;
+  border-bottom: 1px solid var(--grid);
+  overflow: hidden;
+  min-height: 600px;
+}
+
+.quote-text-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.quote-text-wrap.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quote-headline {
+  font-family: var(--serif);
+  font-size: clamp(36px, 7vw, 96px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 0;
+}
+
+.quote-highlight {
+  color: var(--green);
+  font-style: italic;
+}
+
+.quote-headline--ghost {
+  color: rgba(10,10,10,0.25);
+  transition: color 0.3s ease;
+}
+
+.quote-text-wrap.visible .quote-headline--ghost {
+  animation: revealGhost 1s ease 0.5s both;
+}
+
+@keyframes revealGhost {
+  from { color: rgba(10,10,10,0.08); }
+  to   { color: rgba(10,10,10,0.25); }
+}
+
+.quote-headline--last {
+  font-style: italic;
+}
+
+/* Characters lineup */
+.quote-characters {
+  margin-top: 60px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s 0.4s ease, transform 1s 0.4s ease;
+}
+
+.quote-characters.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.characters-img {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: block;
+  object-fit: contain;
+  filter: grayscale(15%);
+}
+
+/* Floating dollar */
+.quote-dollar-wrap {
+  position: absolute;
+  bottom: 60px;
+  left: 220px;
+  width: 220px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.quote-dollar {
+  width: 100%;
+  animation: floatBill 6s ease-in-out infinite;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.12));
+}
+
+@media (max-width: 768px) {
+  .quote-section { padding: 60px 20px 0; }
+  .quote-headline { font-size: clamp(28px, 8vw, 52px); }
+  .quote-dollar-wrap { display: none; }
+}

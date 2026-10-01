@@ -1,0 +1,175 @@
+.author-section {
+  position: relative;
+  padding: 80px 40px;
+  border-bottom: 1px solid var(--grid);
+  overflow: hidden;
+}
+
+.author-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.author-body.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Book cards on the left */
+.author-books {
+  position: relative;
+  min-height: 460px;
+}
+
+.author-book-card {
+  position: absolute;
+}
+
+.book-cover {
+  width: 100px;
+  height: 130px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  box-shadow: 4px 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-cover:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 6px 12px 28px rgba(0,0,0,0.22);
+}
+
+.book-cover--blue {
+  background: #1a3a7c;
+  color: white;
+  letter-spacing: 0.05em;
+}
+
+.book-cover--gray {
+  background: #c8c8c8;
+  color: #333;
+}
+
+.author-book-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--black);
+  font-family: var(--sans);
+}
+
+.author-book-date {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--sans);
+}
+
+.author-conf-card {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.author-conf-img {
+  width: 140px;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  box-shadow: 4px 6px 20px rgba(0,0,0,0.15);
+}
+
+.author-book-img {
+  width: 100px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  box-shadow: 4px 6px 20px rgba(0,0,0,0.15);
+}
+
+.conf-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+}
+
+/* Right: Bio */
+.author-bio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.author-bio-text {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.5vw, 28px);
+  line-height: 1.5;
+  color: var(--black);
+  margin-bottom: 48px;
+}
+
+.author-bio-text em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.author-signature-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.author-signature {
+  margin-bottom: 12px;
+}
+
+.signature-img {
+  width: 160px;
+  height: auto;
+  filter: grayscale(100%) contrast(1.2);
+  opacity: 0.85;
+}
+
+.signature-svg {
+  width: 160px;
+  height: 60px;
+}
+
+.author-name {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+
+.author-role {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .author-body { grid-template-columns: 1fr; gap: 40px; }
+  .author-books { min-height: 280px; }
+}
+
+@media (max-width: 600px) {
+  .author-section { padding: 60px 20px; }
+}

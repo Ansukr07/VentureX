@@ -1,0 +1,235 @@
+/* ============================================================
+   MONEY IN CHECK — Global Styles v2 (Premium Motion Layer)
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green: #0F7B5F;
+  --black: #0A0A0A;
+  --white: #ffffff;
+  --bg: #EAEAEA;
+  --bg-light: #F0F0F0;
+  --grid: #D5D5D5;
+  --text-muted: #888888;
+  --text-secondary: #555555;
+  --card-bg: #E2E2E2;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html {
+  /* Lenis manages scroll, but keep native as fallback */
+  scroll-behavior: auto;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--black);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  position: relative;
+  /* GPU-composited layer for smooth repaints */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grid Background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 120px 120px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+  will-change: transform;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+a   { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: var(--sans); }
+
+/* ── Will-change hints for animated elements ─────────────── */
+.hero-knight,
+.phil-dollar,
+.quote-dollar,
+.footer-dollar {
+  will-change: transform;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+
+/* ── Chess notation annotations ─────────────────────────── */
+.chess-annotation {
+  position: absolute;
+  font-family: var(--serif);
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+  font-style: italic;
+}
+
+/* ── Floating keyframe (used as CSS fallback) ────────────── */
+@keyframes floatBill {
+  0%, 100% { transform: rotate(-12deg) translateY(0px); }
+  50%       { transform: rotate(-8deg)  translateY(-18px); }
+}
+
+@keyframes floatKnight {
+  0%, 100% { transform: translateY(0px)   rotate(-2deg); }
+  50%       { transform: translateY(-12px) rotate(2deg); }
+}
+
+/* ── Section transitions ─────────────────────────────────── */
+main > section {
+  position: relative;
+  /* Paint isolation: each section is its own stacking context */
+  isolation: isolate;
+}
+
+/* Subtle gradient bleed between sections */
+main > section + section::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(234,234,234,0.6), transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ── Hover glow on CTAs ──────────────────────────────────── */
+.btn-amazon,
+.nav-buy-btn,
+.btn-send {
+  transition: transform 0.22s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.22s cubic-bezier(0.16,1,0.3,1),
+              background 0.22s ease,
+              color 0.22s ease;
+}
+
+/* ── Reduced motion override ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Show elements immediately if motion is off */
+  [style*="opacity: 0"] {
+    opacity: 1 !important;
+  }
+}
+
+/* ── Cursor: subtle crosshair on hero ───────────────────── */
+#hero {
+  cursor: none;
+}
+
+.hero-cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+  mix-blend-mode: multiply;
+  transition: transform 0.08s linear;
+}
+
+.hero-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: var(--green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+
+/* ── Sticky storytelling wrapper ─────────────────────────── */
+.sticky-story {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* ── Image hover zoom ────────────────────────────────────── */
+.img-hover-zoom {
+  overflow: hidden;
+}
+
+.img-hover-zoom img {
+  transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* ── Card lift ───────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.35s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.14);
+}
+
+/* ── Text selection colour ───────────────────────────────── */
+::selection {
+  background: var(--green);
+  color: white;
+}
