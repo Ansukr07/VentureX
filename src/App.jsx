@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Philosophy from './components/Philosophy'
 import TheBook from './components/TheBook'
+import FaqSection from './components/FaqSection'
 import QuoteBanner from './components/QuoteBanner'
 import Footer from './components/Footer'
 import LoadingScreen from './components/LoadingScreen'
@@ -26,6 +27,7 @@ export default function App() {
             <Hero />
             <Philosophy />
             <TheBook />
+            <FaqSection />
             <QuoteBanner />
           </main>
           <Footer />
