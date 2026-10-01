@@ -11,25 +11,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 const EASE = [0.16, 1, 0.3, 1]
 
-const textLine = {
-  hidden:  { opacity: 0, y: 52 },
-  visible: (d) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 1.1, delay: d, ease: EASE },
-  }),
-}
-
-const metaItem = {
-  hidden:  { opacity: 0, y: 8 },
-  visible: (d) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: d, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-}
-
 export default function Philosophy() {
   const sectionRef = useRef(null)
   const dollarRef  = useRef(null)
+  const textRefs = useRef([])
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
 
   /* Parallax: dollar bill drifts at a different rate than text */
@@ -48,71 +33,79 @@ export default function Philosophy() {
           scrub: 2,
         },
       })
+
+      const textEls = gsap.utils.toArray('.phil-text')
+      gsap.set(textEls, { color: '#BDBDBD', opacity: 0.92 })
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'top top',
+        end: 'bottom bottom',
+        pin: '.phil-body',
+        pinSpacing: true,
+        scrub: 1.2,
+      })
+
+      textEls.forEach((el, index) => {
+        gsap.fromTo(
+          el,
+          { color: '#BDBDBD', opacity: 0.55, y: 16 },
+          {
+            color: '#0A0A0A',
+            opacity: 1,
+            y: 0,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 78%',
+              end: 'bottom 38%',
+              scrub: true,
+            },
+          }
+        )
+
+        gsap.to(el, {
+          filter: 'blur(0px)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+            end: 'bottom 50%',
+            scrub: true,
+          },
+        })
+      })
     }, sectionRef)
     return () => ctx.revert()
   }, [])
 
   return (
     <section id="intro" className="philosophy" ref={sectionRef}>
-      {/* Meta bar — staggered fade */}
-      <motion.div
-        className="phil-meta"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        {[
-          { el: <span className="phil-meta-item">Venture X.</span>, d: 0 },
-          { el: <span className="phil-meta-item phil-meta-center">The Principles of Wealth.</span>, d: 0.08 },
-          { el: <span className="phil-meta-item phil-meta-date">October 1, 2026, 9:26 AM</span>, d: 0.16 },
-          {
-            el: <span className="phil-meta-item phil-meta-right">Boston, MA</span>,
-            d: 0.24,
-          },
-        ].map(({ el, d }, i) => (
-          <motion.div key={i} variants={metaItem} custom={d}>{el}</motion.div>
-        ))}
-      </motion.div>
+      <div className="phil-meta">
+        <span className="phil-meta-item">Venture X.</span>
+        <span className="phil-meta-item phil-meta-center">The Principles of Wealth.</span>
+        <span className="phil-meta-item phil-meta-date">October 1, 2026, 9:26 AM</span>
+        <span className="phil-meta-item phil-meta-right">Boston, MA</span>
+      </div>
 
-      {/* Large paragraphs — each line fades up */}
       <div className="phil-body">
-        <motion.p
+        <p
           className="phil-text"
-          variants={textLine}
-          custom={0}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          ref={(el) => {
+            if (el) textRefs.current[0] = el
+          }}
         >
-          Most people enter{' '}
-          <span className="phil-inline-icon">♟</span>
-          {' '}adulthood as if they were sitting down at a chessboard for the
-          first time, without knowing{' '}
-          <span className="phil-inline-icon">♞</span>
-          {' '}the rules, without recognizing which pieces truly matter, and
-          believing that hard work alone will be enough to stay{' '}
-          <span className="phil-inline-icon">♝</span>
-          {' '}in the game.
-        </motion.p>
+          Every great startup begins with an idea, but turning that idea into a successful venture requires vision, execution, resilience, and the right opportunities. VentureX is a national platform where ambitious founders, emerging startups, and innovators come together to showcase their ventures, validate their ideas, and connect with the people who can help them grow.
+        </p>
 
-        <motion.p
+        <p
           className="phil-text phil-text--secondary"
-          variants={textLine}
-          custom={0.12}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          ref={(el) => {
+            if (el) textRefs.current[1] = el
+          }}
         >
-          But money has its own logic, its own{' '}
-          <span className="phil-inline-icon">♟</span>
-          {' '}traps, its punishments, and its rewards. Venture X is the
-          story of a game learned the hard way, and an invitation to discover
-          that true financial{' '}
-          <span className="phil-inline-icon">🚲</span>
-          {' '}freedom is not about having more, but about living with margin
-          and dignity, and being able to choose the life you truly want without
-          fear.
-        </motion.p>
+          Through a rigorous evaluation process, the most promising ventures earn the opportunity to pitch directly before investors, mentors, and industry leaders. More than just a pitching event, VentureX is a gateway to funding, mentorship, strategic partnerships, and the connections that transform startups into scalable businesses.
+        </p>
       </div>
 
       {/* Floating dollar — parallax + float */}

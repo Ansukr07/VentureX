@@ -38,6 +38,7 @@
   margin: 0 auto;
   padding: 80px 40px 0;
   text-align: center;
+  position: relative;
 }
 
 .phil-text {
@@ -45,13 +46,15 @@
   font-size: clamp(28px, 4.5vw, 58px);
   line-height: 1.25;
   letter-spacing: -0.01em;
-  color: var(--black);
+  color: #BDBDBD;
   margin-bottom: 60px;
-  /* Framer Motion handles reveal — no CSS animation needed */
+  opacity: 0.92;
+  will-change: color, opacity, transform, filter;
+  transition: color 0.2s linear;
 }
 
 .phil-text--secondary {
-  color: #555;
+  color: #BDBDBD;
 }
 
 .phil-inline-icon {
