@@ -150,7 +150,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          The Invisible Rules of Wealth
+          Pitch. Connect. Grow.
         </motion.p>
 
         {/* Title: VENTURE X with Centered Horse */}
@@ -212,7 +212,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          A novel by Óscar Pérez
+          An Initiative by E-Cell, BMSIT&amp;M
         </motion.p>
 
         {/* Mouse Scroll Doodle */}

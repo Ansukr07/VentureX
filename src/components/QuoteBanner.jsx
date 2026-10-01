@@ -122,9 +122,9 @@ export default function QuoteBanner() {
 
         {/* Ghost lines */}
         {[
-          'every move matters',
-          'when you understand',
-          'the rules.',
+          'every idea matters',
+          'when given',
+          'the opportunity.',
         ].map((line, i) => (
           <motion.h2
             key={line}
