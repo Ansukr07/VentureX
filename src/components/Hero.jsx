@@ -4,7 +4,6 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import horseImg from '../assets/horse.webp'
 import bill1 from '../assets/bill-1.webp'
-import coinImg from '../assets/coin.webp'
 import doodle1 from '../assets/doodle-1.mp4'
 import doodle2 from '../assets/doodle-2.mp4'
 import doodle3 from '../assets/doodle-3.mp4'
@@ -115,16 +114,6 @@ export default function Hero() {
           transition={{ duration: 1.2, delay: 1.0 + i * 0.15 }}
         />
       ))}
-
-      {/* Floating Roman coin top-right */}
-      <motion.div
-        className="hero-floating-coin"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, delay: 1.3 }}
-      >
-        <img src={coinImg} alt="Roman coin" className="hero-coin-img" />
-      </motion.div>
 
       {/* Floating dollar bill bottom-left */}
       <motion.div

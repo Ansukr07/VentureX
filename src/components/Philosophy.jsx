@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import coinImg   from '../assets/coin.webp'
 import billImg   from '../assets/bill-1.webp'
 import doodle4   from '../assets/doodle-4.mp4'
 import doodle5   from '../assets/doodle-5.mp4'
@@ -67,18 +66,7 @@ export default function Philosophy() {
           { el: <span className="phil-meta-item phil-meta-center">The Principles of Wealth.</span>, d: 0.08 },
           { el: <span className="phil-meta-item phil-meta-date">October 1, 2026, 9:26 AM</span>, d: 0.16 },
           {
-            el: (
-              <span className="phil-meta-item phil-meta-right">
-                <motion.img
-                  src={coinImg}
-                  alt="coin"
-                  className="phil-coin"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                />
-                Boston, MA
-              </span>
-            ),
+            el: <span className="phil-meta-item phil-meta-right">Boston, MA</span>,
             d: 0.24,
           },
         ].map(({ el, d }, i) => (

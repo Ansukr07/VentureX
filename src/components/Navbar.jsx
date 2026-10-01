@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import coinImg from '../assets/coin.webp'
 import './Navbar.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -76,15 +75,6 @@ export default function Navbar() {
               <div onClick={() => { setLang('Es'); setLangOpen(false) }}>Español</div>
             </motion.div>
           )}
-        </motion.div>
-
-        <motion.div
-          className="nav-coin-wrap"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1.7 }}
-        >
-          <img src={coinImg} alt="Roman coin" className="nav-coin-img" />
         </motion.div>
 
         <motion.a
