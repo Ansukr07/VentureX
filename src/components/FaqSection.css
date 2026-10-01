@@ -51,6 +51,16 @@
   font-family: var(--sans);
 }
 
+.faq-trigger:focus,
+.faq-trigger:focus-visible,
+.faq-trigger:active,
+.faq-item.open .faq-trigger {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
 .faq-trigger:hover .faq-question,
 .faq-trigger:hover .faq-number,
 .faq-trigger:hover .faq-toggle {
