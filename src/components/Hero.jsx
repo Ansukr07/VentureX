@@ -46,7 +46,7 @@ const fadeUpVar = {
 }
 
 const doodleVideos = [
-  { src: doodle1, style: { top: '8%', left: '2%', width: '120px', opacity: 0.7 } },
+  { src: doodle2, style: { top: '8%', left: '2%', width: '120px', opacity: 0.7 } },
   { src: doodle2, style: { top: '55%', right: '3%', width: '100px', opacity: 0.65 } },
   { src: doodle3, style: { bottom: '10%', left: '5%', width: '90px', opacity: 0.6 } },
 ]
