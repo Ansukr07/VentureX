@@ -66,13 +66,13 @@
   transform: translateY(0);
 }
 
-.characters-img {
+.characters-placeholder {
   width: 100%;
   max-width: 900px;
+  height: 220px;
   margin: 0 auto;
   display: block;
-  object-fit: contain;
-  filter: grayscale(15%);
+  background: transparent;
 }
 
 /* Floating dollar */

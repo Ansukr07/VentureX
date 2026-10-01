@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import billImg2      from '../assets/bill-2.webp'
+import billImg2 from '../assets/bill-2.webp'
 import './QuoteBanner.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -146,16 +146,7 @@ export default function QuoteBanner() {
         ref={charRef}
         style={{ y: charY }}
       >
-        <motion.img
-          src="/characters.jpg"
-          alt="Characters from Venture X"
-          className="characters-img"
-          initial={{ opacity: 0, scale: 1.06 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 1.1, ease: EASE }}
-          whileHover={{ scale: 1.015 }}
-        />
+        <div className="characters-placeholder" aria-hidden="true" />
       </motion.div>
 
       {/* ── Floating dollar — multi-axis parallax ── */}
