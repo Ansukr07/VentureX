@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import bookCoverImg from '../assets/book-cover-EN.webp'
-import bookFullImg  from '../assets/book-1-EN.png'
+import ventureXBook from '../assets/image.png'
 import doodle6      from '../assets/doodle-6.mp4'
 import './TheBook.css'
 
@@ -12,10 +12,10 @@ gsap.registerPlugin(ScrollTrigger)
 const EASE = [0.16, 1, 0.3, 1]
 
 const formats = [
-  { name: 'Paperback',    price: '$15.99' },
-  { name: 'Hardcover',   price: '$22.99' },
-  { name: 'Kindle Edition', price: '$9.99' },
-  { name: 'Audiobook',   price: 'Soon'   },
+  { name: 'Startup & Investor Pitching', price: '—' },
+  { name: 'National-Level Event', price: '—' },
+  { name: 'Organized by E-Cell, BMSIT&M', price: '—' },
+  { name: 'Top 30 Ventures Selected', price: '—' },
 ]
 
 const rowVar = {
@@ -74,15 +74,15 @@ export default function TheBook() {
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7, ease: EASE }}
       >
-        <p className="book-label">The Book</p>
-        <p className="book-sublabel">5 Languages. 3 Formats. One Story.</p>
+        <p className="book-label">The Event</p>
+        <p className="book-sublabel">30 Startups. Investors. One Opportunity.</p>
       </motion.div>
 
       {/* Visual area with scroll-zoom */}
       <div className="book-visual-area" ref={visualRef}>
         {/* Real book cover image */}
         <motion.img
-          src={bookFullImg}
+          src={ventureXBook}
           alt="Venture X book cover"
           className="book-visual-img"
           initial={{ opacity: 0, scale: 1.05 }}
@@ -134,7 +134,7 @@ export default function TheBook() {
         >
           <table className="book-table">
             <thead>
-              <tr><th>Format</th><th>Price (USD)</th></tr>
+              <tr><th>CATEGORY</th><th>DETAILS</th></tr>
             </thead>
             <tbody>
               {formats.map((f, i) => (
@@ -162,9 +162,9 @@ export default function TheBook() {
             whileTap={{ scale: 0.97 }}
             transition={{ type: 'spring', stiffness: 300, damping: 22 }}
           >
-            Buy on Amazon
+            Apply for VentureX
           </motion.a>
-          <p className="book-kindle-note">(*) Free with a Kindle Unlimited membership</p>
+          <p className="book-kindle-note">Applications open for startups across India.</p>
         </motion.div>
 
         {/* Right column */}
@@ -191,10 +191,8 @@ export default function TheBook() {
           </div>
 
           <h2 className="book-tagline">
-            Not a finance textbook.<br />
-            Not just a novel.<br />
-            A story that teaches you how<br />
-            money really works.
+            Ideas deserve more than attention.<br />
+            They deserve opportunity.
           </h2>
 
           {/* Animated slide switch */}
@@ -210,39 +208,38 @@ export default function TheBook() {
               {slide === 0 ? (
                 <>
                   <p>
-                    <em>Oliver Harper</em> arrives at Harvard on a scholarship, with an outsized
-                    ambition and the feeling that he is entering a world that was not designed
-                    for him. He comes from a family where money was always tight, financial
-                    mistakes came at a high price, and hope weighed as heavily as the bills.
+                    VentureX is a national-level startup and investor pitching platform organized
+                    by E-Cell, BMSIT&amp;M. It brings together ambitious founders, emerging
+                    startups, investors, mentors, and ecosystem leaders on a single stage designed
+                    to accelerate innovation and growth.
                   </p>
                   <br />
                   <p>
-                    Having learned to see the world through the logic of a chessboard,
-                    Oliver soon discovers that money, like chess, has invisible rules:{' '}
-                    <em>the winner is not the one who appears wealthiest or moves fastest,
-                    but the one who understands the position before making the next move.</em>
+                    Every startup begins with an idea, but transforming that idea into a
+                    successful venture requires validation, guidance, funding, and meaningful
+                    connections. VentureX provides founders with the opportunity to showcase their
+                    ventures, gain valuable feedback, and connect directly with investors and
+                    industry experts.
                   </p>
                   <br />
                   <p>
-                    Venture X is a story about wealth, ambition, family, and freedom.
-                    It is not a manual, but a game played over the course of a lifetime: the
-                    story of a young man who learns, move by move, to stop merely surviving
-                    and start building a life of his own.
+                    Through a rigorous evaluation process, the most promising startups earn the
+                    opportunity to pitch before investors, build strategic partnerships, access
+                    mentorship, and unlock pathways for long-term growth.
                   </p>
                 </>
               ) : (
                 <>
                   <p>
-                    Set against the backdrop of Harvard's elite social circles, Oliver must
-                    navigate a world where the unwritten rules of money and power are never
-                    spoken aloud but always enforced.
+                    VentureX is built to help founders move from concept to traction — turning
+                    early potential into real market momentum, strategic partnerships, and investor
+                    confidence.
                   </p>
                   <br />
                   <p>
-                    From a cramped apartment in his hometown to the highest-stakes decisions
-                    of his career, Oliver's journey is a master class in the invisible
-                    architecture of financial freedom — one move, one lesson, one sacrifice
-                    at a time.
+                    By creating a focused environment for discovery, evaluation, and connection,
+                    the platform helps emerging companies access the resources they need to scale
+                    with clarity and purpose.
                   </p>
                 </>
               )}
@@ -257,7 +254,7 @@ export default function TheBook() {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
           >
-            <p className="book-email-title">Read and listen to Chapter 1 for free</p>
+            <p className="book-email-title">Register for VentureX</p>
             {submitted ? (
               <motion.p
                 className="book-email-success"
@@ -265,13 +262,13 @@ export default function TheBook() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
               >
-                ✓ Check your inbox! Chapter 1 is on its way.
+                ✓ Registration successful. We’ll be in touch.
               </motion.p>
             ) : (
               <form className="book-email-form" onSubmit={handleSubmit}>
                 <input
                   type="email"
-                  placeholder="Your email"
+                  placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="book-email-input"
@@ -283,12 +280,12 @@ export default function TheBook() {
                   whileHover={{ scale: 1.04, backgroundColor: 'var(--green)' }}
                   whileTap={{ scale: 0.96 }}
                 >
-                  Send
+                  Register Now
                 </motion.button>
               </form>
             )}
             <p className="book-email-note">
-              (*) By subscribing, you agree to receive occasional updates about the book.
+              Applications are subject to eligibility and evaluation criteria.
             </p>
           </motion.div>
         </motion.div>
