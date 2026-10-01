@@ -138,7 +138,6 @@ main > section + section::before {
 
 /* ── Hover glow on CTAs ──────────────────────────────────── */
 .btn-amazon,
-.nav-buy-btn,
 .btn-send {
   transition: transform 0.22s cubic-bezier(0.16,1,0.3,1),
               box-shadow 0.22s cubic-bezier(0.16,1,0.3,1),
