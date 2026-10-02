@@ -4,6 +4,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react'
 import image26 from '../assets/image26.jpg'
 import image37 from '../assets/image37.jpg'
 import image43 from '../assets/image43.JPG'
+import { getLenis } from '../lib/useLenis'
 import './Navbar.css'
 
 const menuItems = [
@@ -15,9 +16,19 @@ const menuItems = [
   { label: 'Contact', href: '#contact' },
 ]
 
+const collageImages = [image26, image37, image43]
+
+const preloadImage = (source) => new Promise((resolve) => {
+  const image = new window.Image()
+  image.onload = resolve
+  image.onerror = resolve
+  image.src = source
+})
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [imagesReady, setImagesReady] = useState(false)
   const navRef = useRef(null)
 
   useEffect(() => {
@@ -27,8 +38,32 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
+    let cancelled = false
+
+    Promise.all(collageImages.map(preloadImage)).then(() => {
+      if (!cancelled) setImagesReady(true)
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen)
-    return () => document.body.classList.remove('menu-open')
+    document.documentElement.classList.toggle('menu-open', menuOpen)
+    const smoothScroll = getLenis()
+
+    if (menuOpen) {
+      smoothScroll?.stop()
+    } else {
+      smoothScroll?.start()
+    }
+
+    return () => {
+      document.body.classList.remove('menu-open')
+      document.documentElement.classList.remove('menu-open')
+    }
   }, [menuOpen])
 
   const closeMenu = () => setMenuOpen(false)
@@ -60,6 +95,8 @@ export default function Navbar() {
           className="menu-trigger"
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={menuOpen}
+          aria-busy={!imagesReady}
+          disabled={!imagesReady}
           onClick={() => setMenuOpen((open) => !open)}
         >
           <Menu size={20} strokeWidth={1.6} aria-hidden="true" />
@@ -71,46 +108,38 @@ export default function Navbar() {
         {menuOpen && (
           <motion.div
             className="menu-overlay"
+            data-lenis-prevent
             role="dialog"
             aria-modal="true"
             aria-label="VentureX navigation"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.28, ease: 'easeOut' }}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 14 }}
+            transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="menu-overlay__inner">
-              <div className="menu-collage" aria-label="VentureX visual collage">
+              <motion.div
+                className="menu-collage"
+                aria-label="VentureX visual collage"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.38, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <div className="collage-kicker">E-CELL / BMSIT&amp;M</div>
-                <motion.div
-                  className="collage-image collage-image--spread"
-                  initial={{ opacity: 0, x: -28, rotate: -3 }}
-                  animate={{ opacity: 1, x: 0, rotate: -3 }}
-                  transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-                >
+                <div className="collage-image collage-image--spread">
                   <img src={image26} alt="VentureX founders collaborating on a startup project" />
-                </motion.div>
-                <motion.div
-                  className="collage-image collage-image--founders"
-                  initial={{ opacity: 0, y: 28, rotate: 4 }}
-                  animate={{ opacity: 1, y: 0, rotate: 4 }}
-                  transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                >
+                </div>
+                <div className="collage-image collage-image--founders">
                   <img src={image37} alt="VentureX participants networking at an event" />
-                </motion.div>
-                <motion.div
-                  className="collage-image collage-image--capital"
-                  initial={{ opacity: 0, x: -18, rotate: -7 }}
-                  animate={{ opacity: 1, x: 0, rotate: -7 }}
-                  transition={{ duration: 0.65, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                >
+                </div>
+                <div className="collage-image collage-image--capital">
                   <img src={image43} alt="VentureX audience attending an investor event" />
-                </motion.div>
+                </div>
                 <div className="collage-caption">
                   <span>Ideas today</span>
                   <strong>Impact tomorrow</strong>
                 </div>
-              </div>
+              </motion.div>
 
               <div className="menu-navigation">
                 <div className="menu-navigation__eyebrow">Navigate VentureX</div>
@@ -123,7 +152,7 @@ export default function Navbar() {
                       onClick={closeMenu}
                       initial={{ opacity: 0, x: 26 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.45, delay: 0.12 + index * 0.055, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.38, delay: 0.12 + index * 0.06, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <span className="menu-link__number">0{index + 1}</span>
                       <span className="menu-link__label">{item.label}</span>
