@@ -93,18 +93,6 @@ button { cursor: pointer; border: none; background: none; font-family: var(--san
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
 
-/* ── Chess notation annotations ─────────────────────────── */
-.chess-annotation {
-  position: absolute;
-  font-family: var(--serif);
-  font-size: 11px;
-  color: var(--text-muted);
-  opacity: 0.55;
-  pointer-events: none;
-  user-select: none;
-  font-style: italic;
-}
-
 /* ── Floating keyframe (used as CSS fallback) ────────────── */
 @keyframes floatBill {
   0%, 100% { transform: rotate(-12deg) translateY(0px); }

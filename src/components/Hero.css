@@ -42,24 +42,6 @@
   object-fit: contain;
 }
 
-/* Floating chess annotations */
-.hero-annotations {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.chess-annotation {
-  position: absolute;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(14px, 1.4vw, 20px);
-  color: #777;
-  letter-spacing: 0.04em;
-  user-select: none;
-}
-
 /* Hero Inner Content (Wide Zoomed-in Canvas) */
 .hero-inner {
   display: flex;

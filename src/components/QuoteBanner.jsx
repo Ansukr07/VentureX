@@ -65,29 +65,6 @@ export default function QuoteBanner() {
 
   return (
     <section className="quote-section" ref={sectionRef}>
-      {/* Chess annotations */}
-      {[
-        { text: 'Bc6',  style: { top: '10%', left: '12%' } },
-        { text: 'Bc3',  style: { top: '10%', right: '10%' } },
-        { text: 'Nf8',  style: { bottom: '18%', right: '8%' } },
-        { text: 'Nc4',  style: { bottom: '30%', left: '30%' } },
-        { text: 'Nd4',  style: { bottom: '8%',  left: '55%' } },
-        { text: 'Rc8',  style: { top: '40%', right: '3%' } },
-        { text: 'Rc8',  style: { top: '55%', left: '3%' } },
-      ].map(({ text, style }, i) => (
-        <motion.span
-          key={i}
-          className="chess-annotation"
-          style={style}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.55 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: i * 0.08 }}
-        >
-          {text}
-        </motion.span>
-      ))}
-
       {/* ── Quote headline ─── */}
       <div className="quote-text-wrap visible">
         {/* Line 1: "Chess, life, and finance" */}

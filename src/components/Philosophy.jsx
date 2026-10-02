@@ -81,13 +81,6 @@ export default function Philosophy() {
 
   return (
     <section id="intro" className="philosophy" ref={sectionRef}>
-      <div className="phil-meta">
-        <span className="phil-meta-item">Venture X.</span>
-        <span className="phil-meta-item phil-meta-center">The Principles of Wealth.</span>
-        <span className="phil-meta-item phil-meta-date">October 1, 2026, 9:26 AM</span>
-        <span className="phil-meta-item phil-meta-right">Boston, MA</span>
-      </div>
-
       <div className="phil-body">
         <p
           className="phil-text"
@@ -119,28 +112,6 @@ export default function Philosophy() {
       >
         <img ref={dollarRef} src={billImg} alt="dollar bill" className="phil-dollar" />
       </motion.div>
-
-      {/* Chess annotations */}
-      {[
-        { text: 'Bd3', style: { top: '15%', left: '5%' } },
-        { text: 'Bb5', style: { top: '35%', left: '45%' } },
-        { text: 'cd4', style: { top: '55%', left: '18%' } },
-        { text: 'Bb4', style: { top: '25%', right: '8%' } },
-        { text: 'Nd7', style: { top: '70%', right: '20%' } },
-        { text: 'c5',  style: { bottom: '18%', left: '38%' } },
-      ].map(({ text, style }, i) => (
-        <motion.span
-          key={text}
-          className="chess-annotation"
-          style={style}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.55 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: i * 0.07 }}
-        >
-          {text}
-        </motion.span>
-      ))}
 
       {/* Floating doodle videos */}
       <motion.video

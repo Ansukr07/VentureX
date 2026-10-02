@@ -99,26 +99,6 @@ export default function TheBook() {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.4 }}
         />
-        <motion.span
-          className="chess-annotation"
-          style={{ top: '20%', left: '35%' }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.55 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.3 }}
-        >
-          Ra8
-        </motion.span>
-        <motion.span
-          className="chess-annotation"
-          style={{ bottom: '15%', right: '30%' }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.55 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          Nc4
-        </motion.span>
       </div>
 
       {/* Bottom two-column layout */}
@@ -290,16 +270,6 @@ export default function TheBook() {
         </motion.div>
       </div>
 
-      <motion.span
-        className="chess-annotation"
-        style={{ top: '8%', right: '12%' }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.55 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.4 }}
-      >
-        Bb5
-      </motion.span>
     </section>
   )
 }

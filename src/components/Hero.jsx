@@ -11,20 +11,6 @@ import './Hero.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const annotations = [
-  { text: 'e4', top: '14%', left: '16%' },
-  { text: 'e5', top: '22%', left: '26%' },
-  { text: 'Nf3', top: '34%', left: '38%' },
-  { text: 'Nc6', top: '29%', right: '35%' },
-  { text: 'Bc4', top: '48%', right: '31%' },
-  { text: 'Bc5', top: '44%', right: '18%' },
-  { text: 'c3', top: '65%', left: '33%' },
-  { text: 'Nf6', top: '72%', left: '40%' },
-  { text: 'd3', top: '73%', right: '36%' },
-  { text: 'd6', top: '89%', left: '32%' },
-  { text: 'O-O', top: '93%', right: '31%' },
-]
-
 const EASE = [0.16, 1, 0.3, 1]
 
 const letterVar = {
@@ -56,7 +42,6 @@ export default function Hero() {
   const knightRef = useRef(null)
   const { scrollY } = useScroll()
 
-  const annotY = useTransform(scrollY, [0, 600], [0, -40])
   const knightY = useTransform(scrollY, [0, 600], [0, -60])
   const knightScale = useTransform(scrollY, [0, 600], [1, 1.06])
 
@@ -123,22 +108,6 @@ export default function Hero() {
         transition={{ duration: 1.4, delay: 1.4 }}
       >
         <img src={bill1} alt="Dollar bill" className="hero-bill-img" />
-      </motion.div>
-
-      {/* Floating chess annotations with parallax */}
-      <motion.div className="hero-annotations" style={{ y: annotY }}>
-        {annotations.map((a, i) => (
-          <motion.span
-            key={i}
-            className="chess-annotation"
-            style={{ top: a.top, left: a.left, right: a.right }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.55 }}
-            transition={{ duration: 1, delay: 1.2 + i * 0.08, ease: 'easeOut' }}
-          >
-            {a.text}
-          </motion.span>
-        ))}
       </motion.div>
 
       <div className="hero-inner">

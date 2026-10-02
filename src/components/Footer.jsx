@@ -1,5 +1,10 @@
-
 import './Footer.css'
+import {
+  FaDiscord,
+  FaEnvelope,
+  FaInstagram,
+  FaLinkedinIn,
+} from 'react-icons/fa'
 
 export default function Footer() {
   return (
@@ -37,10 +42,18 @@ export default function Footer() {
           </p>
 
           <div className="social-row" aria-label="Social links">
-            <span className="social-icon social-icon--circle">◉</span>
-            <span className="social-icon social-icon--circle">◌</span>
-            <span className="social-icon social-icon--in">in</span>
-            <span className="social-icon social-icon--mail">✉</span>
+            <a className="social-icon" href="#instagram" aria-label="Instagram">
+              <FaInstagram aria-hidden="true" />
+            </a>
+            <a className="social-icon" href="#discord" aria-label="Discord">
+              <FaDiscord aria-hidden="true" />
+            </a>
+            <a className="social-icon" href="#linkedin" aria-label="LinkedIn">
+              <FaLinkedinIn aria-hidden="true" />
+            </a>
+            <a className="social-icon" href="mailto:hello@venturex.example" aria-label="Email">
+              <FaEnvelope aria-hidden="true" />
+            </a>
           </div>
         </div>
       </div>
