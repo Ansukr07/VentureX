@@ -8,7 +8,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="contact">
       <div className="footer-inner">
         <div className="footer-column">
           <h3 className="footer-title">Quick Links</h3>
@@ -42,13 +42,31 @@ export default function Footer() {
           </p>
 
           <div className="social-row" aria-label="Social links">
-            <a className="social-icon" href="#instagram" aria-label="Instagram">
+            <a
+              className="social-icon"
+              href="https://www.instagram.com/ecell.bmsit?igsh=dW56aGtuY3pnNTBl"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
               <FaInstagram aria-hidden="true" />
             </a>
-            <a className="social-icon" href="#discord" aria-label="Discord">
+            <a
+              className="social-icon"
+              href="https://discord.com/invite/FTSdVUku6Y"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Discord"
+            >
               <FaDiscord aria-hidden="true" />
             </a>
-            <a className="social-icon" href="#linkedin" aria-label="LinkedIn">
+            <a
+              className="social-icon"
+              href="https://www.linkedin.com/company/ecellbmsit/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
               <FaLinkedinIn aria-hidden="true" />
             </a>
             <a className="social-icon" href="mailto:hello@venturex.example" aria-label="Email">

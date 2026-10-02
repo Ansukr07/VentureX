@@ -50,6 +50,16 @@
   letter-spacing: -0.02em;
 }
 
+.footer-list li {
+  transition: color 0.2s ease;
+}
+
+.footer-list li:hover,
+.social-icon:hover,
+.social-icon:focus-visible {
+  color: var(--green);
+}
+
 .footer-list--contact li {
   font-size: clamp(18px, 1.5vw, 24px);
 }
@@ -84,6 +94,7 @@
   color: rgba(10, 10, 10, 0.8);
   line-height: 0;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .social-icon svg {
